@@ -1,4 +1,4 @@
-Advanced Statistical Approaches to Quality
+A Statistical Classification of Dry Beans for Quality Monitoring in Packaging
 ==========================================
 
 This repository contains an exploration of advanced statistical methods applied to the Dry Bean dataset, specifically focusing on classification and dimensionality reduction techniques. The project demonstrates the use of **Principal Component Analysis (PCA)**, **Random Forest Classifier**, and other machine learning techniques to analyze and classify dry bean grains based on various features.
