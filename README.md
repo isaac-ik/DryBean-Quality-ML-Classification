@@ -1,12 +1,13 @@
 A Statistical Classification of Dry Beans for Quality Monitoring in Packaging
 ==========================================
 
-This repository contains an exploration of advanced statistical methods applied to the Dry Bean dataset, specifically focusing on classification and dimensionality reduction techniques. The project demonstrates the use of **Principal Component Analysis (PCA)**, **Random Forest Classifier**, and other machine learning techniques to analyze and classify dry bean grains based on various features.
+This project explores advanced statistical and machine learning methods applied to the Dry Bean dataset, with the goal of classifying beans into their respective categories to support quality control in packaging. The analysis demonstrates how features extracted from bean images can be used to assess and sort beans, helping ensure consistent product quality.
+
 
 Project Overview
 ----------------
 
-This project was developed as part of my individual coursework. The dataset consists of images of 13,611 grains from 7 different types of registered dry beans, with 16 features extracted from each grain. The goal is to classify the dry beans into their respective categories based on these features using statistical and machine learning approaches.
+This project was developed as part of my individual coursework. The dataset contains 13,611 bean samples across 7 registered varieties (Seker, Barbunya, Bombay, Cali, Dermosan, Horoz, Sira), with 16 features per sample, including area, perimeter, axis lengths, shape factors, and other geometric properties. These features form the basis for classification and dimensionality reduction using methods such as Principal Component Analysis (PCA) and Random Forest Classifiers.
 
 ### Key Features of the Dataset:
 
