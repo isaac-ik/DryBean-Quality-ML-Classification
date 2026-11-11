@@ -1,0 +1,38 @@
+{
+  "camera": {
+    "index": 0,
+    "width": 1280,
+    "height": 720,
+    "lock_exposure": false,
+    "exposure": -6,
+    "latency_ms": 80
+  },
+  "roi": [80, 200, 1200, 600],
+  "trigger_line_x": 640,
+  "belt_moves_right_in_image": true,
+  "belt_rpm": 10,
+
+  "detect": {
+    "color_distance": 28,
+    "min_area_px": 600,
+    "max_area_px": 40000,
+    "max_jump_px": 240
+  },
+
+  "classifier": {
+    "mode": "model",
+    "model_path": "models/drybean_model.joblib",
+    "target_varieties": ["DERMASON"],
+    "other_variety_gate": 2,
+    "uncertain_gate": 3,
+    "min_confidence": 0.70,
+    "novelty_factor": 1.5,
+    "variety_gates": {}
+  },
+
+  "rules": [
+    {"name": "black",   "gate": 1, "when": {"L": [0, 28]}},
+    {"name": "spotted", "gate": 1, "when": {"dark_frac": [0.18, 1.0]}}
+  ],
+  "default_class": {"name": "good", "gate": 0}
+}

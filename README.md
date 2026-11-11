@@ -21,7 +21,7 @@ This project was developed as part of my individual coursework. The dataset cont
 8.  **Equivalent Diameter (Ed)**: Diameter of a circle with the same area as the bean.
 9.  **Extent (Ex)**: Ratio of pixels in the bounding box to the total area of the bean.
 10. **Solidity (S)**: The ratio of pixels in the convex hull to the bean's pixels.
-11. **Roundness (R)**: Calculated as 4πAP2\frac{4 \pi A}{P^2}P24πA​, representing the roundness of the bean.
+11. **Roundness (R)**: Calculated as 4πA / P², representing the roundness of the bean.
 12. **Compactness (CO)**: Ratio of equivalent diameter to the major axis length.
 13. **Shape Factors (SF1, SF2, SF3, SF4)**: Various shape factors calculated from the bean's geometry.
 14. **Class**: The bean variety, one of the following: Seker, Barbunya, Bombay, Cali, Dermosan, Horoz, or Sira.
@@ -32,8 +32,26 @@ Contents of the Repository
 --------------------------
 
 -   **Dry Bean Classifiers.ipynb**: Jupyter notebook containing the implementation of the machine learning pipeline. It includes data preprocessing, dimensionality reduction, exploratory analysis, classification, and performance evaluation.
--   **DryBeanDataset**: The folder containing the raw dataset.
--   **Dry_Bean_Dataset.xlsx**: the dataset used for analysis.
+-   **Dry Bean classifier.pdf**: The written report.
+-   **DryBeanDataset/**: The raw dataset (`.arff`, `.xlsx` and a description).
+-   **[conveyor-sorter/](conveyor-sorter/)**: A 3D-printable, camera-guided conveyor that uses this classifier to sort beans (see below).
+
+From model to machine: the conveyor sorter
+------------------------------------------
+
+The [`conveyor-sorter`](conveyor-sorter/) folder takes the classifier off the screen and into hardware. A camera looks at each bean on a belt, OpenCV measures the same 16 shape features as the dataset, the model predicts the variety, and an Arduino opens a servo gate to drop the bean into the right bin.
+
+![Conveyor assembly](conveyor-sorter/docs/assembly.png)
+
+| Folder | What's in it |
+|---|---|
+| `cad/` | Parametric CAD script that generates every printed part |
+| `stl/` | Ready-to-print parts (file names include how many to print) |
+| `firmware/` | Arduino sketch for the belt stepper and gate servos |
+| `vision/` | Camera pipeline, feature measurement, model training and validation |
+| `blender/` | Animated assembly and gate-timing simulation |
+
+The design and software are checked in simulation. The physical machine has not been built yet. See the [conveyor README](conveyor-sorter/README.md) to build it and [DESIGN_NOTES.md](conveyor-sorter/DESIGN_NOTES.md) for the engineering decisions.
 
 Key Techniques and Analysis
 ---------------------------
@@ -66,33 +84,28 @@ Dependencies
 
 The following Python libraries are required to run the project:
 
-bash
-
-Copy code
-
-`pip install pandas numpy scikit-learn matplotlib seaborn`
+```bash
+pip install pandas numpy scikit-learn matplotlib seaborn
+```
 
 Usage
 -----
 
 1.  Clone this repository to your local machine:
 
-    bash
-
-    Copy code
-
-    `git clone https://github.com/isaac-ik/Advanced-Statistical-Approaches-to-Quality.git`
+    ```bash
+    git clone https://github.com/isaac-ik/DryBean-Quality-ML-Classification.git
+    ```
 
 2.  Navigate to the project directory:
 
-    bash
+    ```bash
+    cd DryBean-Quality-ML-Classification
+    ```
 
-    Copy code
-
-    `cd Advanced-Statistical-Approaches-to-Quality`
-
-3.  Open the **Dry Bean Classifiers.ipynb** in a Jupyter Notebook or Google Colab.
+3.  Open **Dry Bean classifiers.ipynb** in Jupyter Notebook or Google Colab.
 4.  Run the notebook cells to perform data analysis, classification, and evaluation.
+
 Authors
 -------
 
